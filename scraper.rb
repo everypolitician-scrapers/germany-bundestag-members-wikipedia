@@ -49,6 +49,7 @@ def scrape_term(id, url)
     data[:wikipedia__de] = data[:id]
 
     unless (tds[6].nil?) || (notes = tds[6].text.tidy).empty?
+      data[:notes] = notes
       if sort_date = tds[6].css('span.sortkey')
         sort_date = Date.parse(sort_date.text).to_s rescue nil
       end
@@ -70,7 +71,6 @@ def scrape_term(id, url)
       elsif notes.include?('nahm sein Mandat nicht an') || notes.include?('Mandat nicht angenommen')
         # TODO: didn't accept mandate
       else
-        data[:notes] = notes
         # warn "#{notes}".yellow
         # binding.pry
       end
