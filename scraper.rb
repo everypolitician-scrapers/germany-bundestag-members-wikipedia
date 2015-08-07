@@ -36,17 +36,18 @@ def scrape_term(id, url)
   table.xpath('.//tr[td]').each do |tr|
     tds = tr.css('td')
     constituency = tds[4].text.tidy rescue ''
+    wikiname = tds[0].css('a/@title').first.text
     data = { 
-      id: tds[0].css('a/@title').first.text,
+      id: wikiname.downcase.tr(' ', '_'),
       name: tds[0].css('a').first.text.tidy,
       sort_name: tds[0].css('span[style*="none"]').text,
       party: tds[2].text.tidy,
       constituency: constituency,
       area: tds[3].text.tidy,
       term: id,
+      identifier__wikipedia_de: wikiname,
       source: url,
     }
-    data[:wikipedia__de] = data[:id]
 
     unless (tds[6].nil?) || (notes = tds[6].text.tidy).empty?
       data[:notes] = notes
@@ -75,7 +76,8 @@ def scrape_term(id, url)
         # binding.pry
       end
     end
-    ScraperWiki.save_sqlite([:name, :term], data)
+    # puts data
+    ScraperWiki.save_sqlite([:id, :term], data)
   end
 end
 
