@@ -45,7 +45,7 @@ def scrape_term(id, url)
       constituency: constituency,
       area: tds[3].text.tidy,
       term: id,
-      identifier__wikipedia_de: wikiname,
+      wikiname: wikiname,
       source: url,
     }
 
