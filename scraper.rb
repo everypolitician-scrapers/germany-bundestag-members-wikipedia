@@ -81,9 +81,9 @@ def scrape_term(id, url)
   end
 end
 
+ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
 (1..18).reverse_each do |id, url|
   puts id
-  # url = 'https://de.wikipedia.org/w/index.php?title=Liste_der_Mitglieder_des_Deutschen_Bundestages_(%d._Wahlperiode)&stable=0' % id
   url = 'https://de.wikipedia.org/wiki/Liste_der_Mitglieder_des_Deutschen_Bundestages_(%d._Wahlperiode)' % id
   scrape_term(id, url)
 end
