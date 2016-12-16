@@ -1,7 +1,6 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-require 'colorize'
 require 'mediawiki_api'
 require 'nokogiri'
 require 'open-uri'
@@ -72,7 +71,7 @@ def scrape_term(id, url)
       elsif notes.include?('nahm sein Mandat nicht an') || notes.include?('Mandat nicht angenommen')
         # TODO: didn't accept mandate
       else
-        # warn "#{notes}".yellow
+        # warn "#{notes}"
         # binding.pry
       end
     end
