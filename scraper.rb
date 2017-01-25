@@ -1,12 +1,11 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-require 'mediawiki_api'
 require 'nokogiri'
 require 'open-uri'
+require 'pry'
 require 'scraperwiki'
 
-require 'pry'
 require 'open-uri/cached'
 OpenURI::Cache.cache_path = '.cache'
 
