@@ -39,7 +39,7 @@ def scrape_term(id, url)
     data = {
       id:           wikiname.downcase.tr(' ', '_'),
       name:         tds[0].css('a').first.text.tidy,
-      sort_name:    tds[0].css('span[style*="none"]').text,
+      sort_name:    tds[0].css('@data-sort-value').text.tidy,
       party:        tds[2].text.tidy,
       constituency: constituency,
       area:         tds[3].text.tidy,
