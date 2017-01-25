@@ -35,7 +35,7 @@ class MemberRow < Scraped::HTML
   end
 
   field :sort_name do
-    tds[0].css('@data-sort-value').text.tidy
+    [tds[0].css('@data-sort-value'), tds[0].css('span[style*="none"]')].map { |v| v.text.tidy }.find { |t| !t.empty? }
   end
 
   field :party do
