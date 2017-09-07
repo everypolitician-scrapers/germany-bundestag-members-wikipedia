@@ -5,11 +5,14 @@
 require 'pry'
 require 'scraped'
 require 'scraperwiki'
+require 'wikidata_ids_decorator'
 
 require 'open-uri/cached'
 OpenURI::Cache.cache_path = '.cache'
 
 class MembersPage < Scraped::HTML
+  decorator WikidataIdsDecorator::Links
+
   field :members do
     table.xpath('.//tr[td]').map do |tr|
       fragment tr => MemberRow
@@ -56,6 +59,10 @@ class MemberRow < Scraped::HTML
 
   field :wikiname do
     tds[0].css('a/@title').first.text
+  end
+
+  field :wikidata do
+    tds[0].css('a/@wikidata').first.text
   end
 
   field :source do
