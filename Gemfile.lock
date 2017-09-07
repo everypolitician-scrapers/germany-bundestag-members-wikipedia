@@ -39,6 +39,22 @@ GIT
       nokogiri
 
 GIT
+  remote: https://github.com/everypolitician/wikidata-fetcher.git
+  revision: 9657b9bf537b9d8717a6312fc35cef7f6e9f724c
+  specs:
+    wikidata-fetcher (0.21.0)
+      colorize
+      diskcached
+      json
+      mediawiki_api
+      nokogiri
+      require_all
+      rest-client
+      scraperwiki
+      wikidata-client (~> 0.0.7)
+      wikisnakker
+
+GIT
   remote: https://github.com/everypolitician/wikidata_ids_decorator.git
   revision: 259c6204d9435875c3cf3ba9216b05603b8fbc7c
   specs:
@@ -156,17 +172,6 @@ GEM
       faraday (~> 0.9)
       faraday_middleware (~> 0.9)
       hashie (~> 3.3)
-    wikidata-fetcher (0.19.1)
-      colorize
-      diskcached
-      json
-      mediawiki_api
-      nokogiri
-      require_all
-      rest-client
-      scraperwiki
-      wikidata-client (~> 0.0.7)
-      wikisnakker
     wikisnakker (0.9.1)
       require_all
       yajl-ruby
@@ -194,6 +199,7 @@ DEPENDENCIES
   table_unspanner!
   vcr
   webmock
+  wikidata-fetcher!
   wikidata_ids_decorator!
 
 RUBY VERSION
