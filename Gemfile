@@ -25,3 +25,4 @@ gem 'scraperwiki', github: 'openaustralia/scraperwiki-ruby',
 gem 'table_unspanner', github: 'everypolitician/table_unspanner'
 gem 'vcr'
 gem 'webmock'
+gem 'wikidata_ids_decorator', github: 'everypolitician/wikidata_ids_decorator'
