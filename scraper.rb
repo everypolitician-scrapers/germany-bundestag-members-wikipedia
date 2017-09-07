@@ -97,7 +97,7 @@ class MemberRow < Scraped::HTML
 
   DATE_RE = '(\d+)\.?\s+([^ ]+)\s+(\d+)'
 
-  MONTHS = %w(_nil januar februar märz april mai juni juli august september oktober november dezember).freeze
+  MONTHS = %w[_nil januar februar märz april mai juni juli august september oktober november dezember].freeze
 
   def tds
     noko.css('td')
@@ -135,7 +135,7 @@ def scrape_term(id, url)
     mem.to_h.merge(term: id)
   end
   # data.each { |m| puts m.reject { |_k, v| v.to_s.empty? }.sort_by { |k, _v| k }.to_h }
-  ScraperWiki.save_sqlite(%i(id term), data)
+  ScraperWiki.save_sqlite(%i[id term], data)
 end
 
 ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
