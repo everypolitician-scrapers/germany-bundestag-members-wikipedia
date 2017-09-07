@@ -134,7 +134,7 @@ def scrape_term(id, url)
   data = MembersPage.new(response: Scraped::Request.new(url: url).response).members.map do |mem|
     mem.to_h.merge(term: id)
   end
-  # data.each { |m| puts m.reject { |_k, v| v.to_s.empty? }.sort_by { |k, _v| k }.to_h }
+  data.each { |mem| puts mem.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h } if ENV['MORPH_DEBUG']
   ScraperWiki.save_sqlite(%i[id term], data)
 end
 
