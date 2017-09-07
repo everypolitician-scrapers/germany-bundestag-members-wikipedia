@@ -58,11 +58,11 @@ class MemberRow < Scraped::HTML
   end
 
   field :wikiname do
-    tds[0].css('a/@title').first.text
+    tds[0].css('a/@title').map(&:text).first
   end
 
   field :wikidata do
-    tds[0].css('a/@wikidata').first.text
+    tds[0].css('a/@wikidata').map(&:text).first
   end
 
   field :source do
